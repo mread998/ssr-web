@@ -1,0 +1,56 @@
+---
+AWSTemplateFormatVersion: 2010-09-09
+Description: Resources required for terraform
+Parameters:
+  Enviroment:
+    Description: Account Enviroment tag
+    Type: String
+    AllowedValues:
+      - dev
+      - uat
+      - prod
+    Default: dev
+  BucketName:
+    Description: Bucket Name 
+    Type: String
+    Default: ssr-web-terraform-state
+    # AllowedPattern: "[a-z][a-z0-9]*"
+    # ConstraintDescription: Must begin with letter and only container lower case alphanumeric character or hyphens.
+  DeployRegion:
+    Description: Region of Deployment (must be North American Region us-east, us-west, or ca-central)
+    Type: String
+    AllowedValues:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - ca-central-1
+Resources:
+  Encrypteds3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub ${BucketName}-${Enviroment}-${DeployRegion}
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: aws:kms
+              KMSMasterKeyID: arn:aws:kms:us-east-1:314027374495:key/6787862a-f217-442e-a9b3-304da13470a7
+            BucketKeyEnabled: true
+      VersioningConfiguration:
+        Status: Enabled
+
+  DynamoDBTable:
+    Type: AWS::DynamoDB::Table
+    Properties: 
+      TableName: !Sub ssr-web-terrform-${DeployRegion}-lock
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+      AttributeDefinitions:
+        -  
+          AttributeName: LockID
+          AttributeType: S
+      KeySchema:
+        -
+          AttributeName: LockID
+          KeyType: HASH
