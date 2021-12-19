@@ -1,6 +1,6 @@
 resource "aws_security_group" "ssr_public_web" {
     name = "SSRPublicWebSG"
-    vpc_id = aws_vpc.ssr-net.id
+    vpc_id = aws_vpc.shared-net.id
   
 
 ingress {
@@ -31,7 +31,7 @@ egress {
 }
 
   tags = merge(
-    var.ssr_tags,
+    var.shared-tags,
     {
       Name = "sixstringrevivalPublicWebSG"
     },
@@ -40,9 +40,9 @@ egress {
 }
 
 
-resource "aws_security_group" "ssr_public_db" {
-    name = "SSRPublicDBSG"
-    vpc_id = aws_vpc.ssr-net.id
+resource "aws_security_group" "shared-_public_db" {
+    name = "shared-PublicDBSG"
+    vpc_id = aws_vpc.shared-net.id
   
 
 ingress {
@@ -60,7 +60,7 @@ egress {
 }
 
   tags = merge(
-    var.ssr_tags,
+    var.shared-tags,
     {
       Name = "sixstringrevivalPublicDBSG"
     },

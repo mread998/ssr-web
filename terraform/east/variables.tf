@@ -1,6 +1,6 @@
-variable "ssr_tags" {
+variable "shared-tags" {
     type = map(string)
-    default = { "Enviroment": "Prod",  "Project": "six string revival", "Owner": "TBA", "Url": "http://www.sixstringrevival.com" } 
+    default = { "Enviroment": "Prod",  "Project": "TBA", "Owner": "TBA", "Url": "TBA" } 
 }
 
 variable "name" {
@@ -31,7 +31,7 @@ variable "ssr-web-instance-type" {
 
 variable "key-pair" {
     type = string
-    default = "ssr-key"  
+    default = "shared-key"  
 }
 
 variable "encrypted" {
@@ -39,33 +39,33 @@ variable "encrypted" {
     default = "true"  
 }
 
-variable "ssr_pub_sub_a" {
+variable "shared_pub_sub_a" {
     type = string
     default = "10.0.1.0/24"  
 }
 
-variable "ssr_pub_sub_b" {
+variable "shared_pub_sub_b" {
     type = string
     default = "10.0.3.0/24"  
 }
 
-variable "ssr_pub_sub_c" {
+variable "shared_pub_sub_c" {
     type = string
     default = "10.0.5.0/24"  
 }
 
-variable "ssr_pri_sub_a" {
+variable "shared_pri_sub_a" {
     type = string
     default = "10.0.2.0/24"  
 
 }
 
-variable "ssr_pri_sub_b" {
+variable "shared_pri_sub_b" {
     type = string
     default = "10.0.4.0/24"  
 }
 
-variable "ssr_pri_sub_c" {
+variable "shared_pri_sub_c" {
     type = string
     default = "10.0.6.0/24"  
 }

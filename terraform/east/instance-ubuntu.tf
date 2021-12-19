@@ -29,7 +29,7 @@
 #     }
 
 #   tags = merge(
-#     var.ssr_tags,
+#     var.shared_tags,
 #     {
 #       Name = "ssrprodweb001"
 #     },
@@ -42,7 +42,7 @@
 #   instance = aws_instance.ssr-web-instance.id
 #   vpc      = true
 #     tags = merge(
-#     var.ssr_tags,
+#     var.shared_tags,
 #     {
 #       Name = "ssrpubweb001"
 #     },

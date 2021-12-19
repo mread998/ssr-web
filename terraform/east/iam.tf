@@ -19,7 +19,7 @@ resource "aws_iam_role" "ssm-enabled" {
     name                  = "ssm-enabled-role"
     path                  = "/"
       tags = merge(
-        var.ssr_tags,
+        var.shared-tags,
         {
         Name = "ssm-enabled"
         },
