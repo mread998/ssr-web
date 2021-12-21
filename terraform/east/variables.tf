@@ -3,6 +3,16 @@ variable "shared-tags" {
     default = { "Enviroment": "Prod",  "Project": "TBA", "Owner": "TBA", "Url": "TBA" } 
 }
 
+variable "ssr-tags" {
+    type = map(string)
+    default = { "Enviroment": "Prod",  "Project": "ssr", "Owner": "TBA", "Url": "https://www.sixstringrevival.com/" } 
+}
+
+variable "thc-tags" {
+    type = map(string)
+    default = { "Enviroment": "Prod",  "Project": "thc", "Owner": "TBA", "Url": "https://www.thunderchrome.com/" } 
+}
+
 variable "name" {
     type = string
     default = "ssw-web"
@@ -29,9 +39,19 @@ variable "ssr-web-instance-type" {
     default = "t2.micro"  
 }
 
-variable "key-pair" {
+variable "thc-web-instance-type" {
     type = string
-    default = "shared-key"  
+    default = "t2.micro"  
+}
+
+variable "ssr-pair" {
+    type = string
+    default = "ssr-key"  
+}
+
+variable "thc-pair" {
+    type = string
+    default = "thc-key"  
 }
 
 variable "encrypted" {

@@ -12,7 +12,12 @@ provider "aws" {
   region  = "us-east-1"
 }
 
-resource "aws_key_pair" "ec2key" {
-  key_name   = "shred-key"
+resource "aws_key_pair" "ssrkey" {
+  key_name   = "ssr-key"
+  public_key = file("../keys/shared_rsa.pub")
+}
+
+resource "aws_key_pair" "thckey" {
+  key_name   = "thc-key"
   public_key = file("../keys/shared_rsa.pub")
 }

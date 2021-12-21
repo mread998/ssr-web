@@ -41,6 +41,11 @@ resource "aws_iam_role_policy_attachment" "ssm-enabled-ec2-ro" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ReadOnlyAccess"
 }
 
+resource "aws_iam_role_policy_attachment" "ssm-s3-full-access" {
+  role       = aws_iam_role.ssm-enabled.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonS3FullAccess"
+}
+
 resource "aws_iam_instance_profile" "ssm-enabled" {
   name = "ssm-enabled-role"
   role = aws_iam_role.ssm-enabled.name

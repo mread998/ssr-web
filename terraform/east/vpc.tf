@@ -25,6 +25,7 @@ resource "aws_internet_gateway" "shared_igw" {
 resource "aws_subnet" "shared_pub_sub_a" {
     vpc_id = aws_vpc.shared-net.id
     cidr_block = var.shared_pub_sub_a
+    availability_zone = "us-east-1e"
 
   tags = merge(
     var.shared-tags,
@@ -37,6 +38,7 @@ resource "aws_subnet" "shared_pub_sub_a" {
 resource "aws_subnet" "shared_pub_sub_b" {
     vpc_id = aws_vpc.shared-net.id
     cidr_block = var.shared_pub_sub_b
+    availability_zone = "us-east-1d"
 
   tags = merge(
     var.shared-tags,
